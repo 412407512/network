@@ -1,0 +1,982 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#0f172a">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+   <title>ALA KAIFAK | على كيفك</title>
+
+    <script src="config.js"></script>
+    <link href="css2.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0ea5e9;
+            /* أزرق سماوي حيوي (Sky Blue) */
+            --primary-light: #7dd3fc;
+            /* أزرق فاتح جداً بارد */
+            --accent: #22d3ee;
+            /* لون تركوازي (Cyan) بارد ومنعش */
+            --bg: #f0f9ff;
+            /* خلفية زرقاء باهتة جداً باردة */
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            /* كحلي غامق جداً للنصوص */
+            --text-muted: #64748b;
+            --danger: #f87171;
+            /* أحمر هادئ يتناسب مع البرودة */
+            --shadow-soft: 0 10px 30px -10px rgba(14, 165, 233, 0.15);
+            /* ظل بلون أزرق خفيف */
+            --shadow-glow: 0 0 20px rgba(34, 211, 238, 0.2);
+            /* توهج تركوازي هادئ */
+        }
+
+        .hero-section {
+            position: relative;
+            height: 280px;
+            background: linear-gradient(135deg, var(--primary) 0%, #0284c7 100%);
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+            color: white;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(14, 165, 233, 0.3);
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            /* لمعان أبيض شفاف ليعطي تأثير الثلج أو البرودة */
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+            animation: rotateBg 20s linear infinite;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif !important;
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            min-height: 100vh;
+            padding-bottom: 90px;
+        }
+
+
+        @keyframes rotateBg {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .status-bar {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            gap: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .status-bar span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .brand-area {
+            z-index: 2;
+            text-align: center;
+            margin-top: 10px;
+            animation: slideDown 0.8s ease;
+        }
+
+        .brand-area h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 900;
+            background: linear-gradient(to right, #fff, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .brand-area p {
+            margin: 5px 0 0;
+            font-size: 12px;
+            opacity: 0.8;
+            letter-spacing: 1px;
+        }
+
+        /* --- Slider --- */
+        .promo-slider {
+            margin: -60px 20px 20px;
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 25px;
+            box-shadow: var(--shadow-soft);
+            background: white;
+            z-index: 10;
+        }
+
+        .slides-wrapper {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+        }
+
+        .slide {
+            min-width: 100%;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: white;
+            position: relative;
+        }
+
+        .slide h3 {
+            margin: 0;
+            color: var(--primary);
+            font-size: 18px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .slide p {
+            margin: 8px 0 0;
+            color: var(--text-muted);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* --- Containers & Forms --- */
+        .container {
+            padding: 0 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 30px;
+            padding: 30px 25px;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .input-wrapper {
+            background: #f8fafc;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .input-wrapper:focus-within {
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(15, 60, 102, 0.1);
+        }
+
+        .input-wrapper input {
+            background: none;
+            border: none;
+            padding: 16px 10px;
+            width: 100%;
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--primary);
+        }
+
+        .btn-connect {
+            width: 100%;
+            padding: 18px;
+            border-radius: 18px;
+            border: none;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 10px 25px rgba(15, 60, 102, 0.25);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .store-btn {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px;
+            border-radius: 16px;
+            background: rgba(212, 175, 55, 0.08);
+            color: #b48a18;
+            text-decoration: none;
+            font-weight: 800;
+            border: 1px dashed #d4af37;
+            font-size: 13px;
+        }
+
+        /* --- Lists --- */
+        .card-item {
+            background: white;
+            padding: 16px 20px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.02);
+            transition: 0.3s;
+        }
+
+        .price-tag {
+            background: linear-gradient(45deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 8px 14px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 14px;
+        }
+
+        /* --- Dock --- */
+        .dock {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 12px 10px;
+            display: flex;
+            justify-content: space-around;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .dock-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 10px;
+            font-weight: 600;
+            transition: 0.3s;
+            padding: 5px 10px;
+            border-radius: 15px;
+        }
+
+        .dock-item.active {
+            color: var(--primary);
+            background: rgba(15, 60, 102, 0.05);
+        }
+
+        .dock-item svg {
+            width: 24px;
+            height: 24px;
+            stroke-width: 2;
+            transition: 0.3s;
+        }
+
+        /* --- Loader & Errors --- */
+        #auto-loader {
+            position: fixed;
+            inset: 0;
+            background: white;
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loader-ring {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 4px solid #e2e8f0;
+            border-top-color: var(--primary);
+            border-right-color: var(--accent);
+            animation: spin 0.8s linear infinite;
+        }
+
+        .error-msg {
+            background: #fef2f2;
+            color: var(--danger);
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            text-align: center;
+            border: 1px solid #fee2e2;
+            display: none;
+        }
+
+        .alert-error {
+
+            background: var(--danger-);
+            color: white;
+            padding: 15px;
+            background: linear-gradient(45deg, #ff4d4d, #cc0000);
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: bold;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0px 8px 20px rgba(239, 68, 68, 0.3);
+            margin: 0 0 20px 0;
+            animation: shake 0.5s ease;
+        }
+
+        /* تنسيق صندوق البطاقة الأخيرة */
+        .recent-card {
+            background: #f0f9ff;
+            /* لون أزرق باهت جداً */
+            border-radius: 20px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border: 2px dashed var(--primary-light);
+            display: none;
+            /* مخفي افتراضياً ويظهره السكريبت */
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow-soft);
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .recent-info p {
+            margin: 0;
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: bold;
+        }
+
+        .recent-info span {
+            font-weight: 800;
+            color: var(--primary);
+            font-size: 16px;
+        }
+
+        .btn-use-last {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-use-last:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        /**
+         * كود إدارة الأنماط الذكي - الأقصى نت
+         * يقوم بربط متغيرات CSS بقيم الألوان بناءً على اختيارك في لوحة التحكم
+         */
+
+        function applyGlobalTheme() {
+            // 1. تعريف مصفوفة الألوان لكافة الأنماط السبعة
+            const themesData = {
+                'default': {
+                    'primary': '#0ea5e9', 'dark': '#0284c7', 'accent': '#22d3ee',
+                    'bg': '#f0f9ff', 'card': '#ffffff', 'text': '#0f172a', 'muted': '#64748b', 'shadow': 'rgba(14, 165, 233, 0.2)'
+                },
+                'emerald': {
+                    'primary': '#10b981', 'dark': '#059669', 'accent': '#34d399',
+                    'bg': '#f0fdf4', 'card': '#ffffff', 'text': '#064e3b', 'muted': '#374151', 'shadow': 'rgba(16, 185, 129, 0.2)'
+                },
+                'amber': {
+                    'primary': '#f59e0b', 'dark': '#d97706', 'accent': '#fbbf24',
+                    'bg': '#fffbeb', 'card': '#ffffff', 'text': '#451a03', 'muted': '#78350f', 'shadow': 'rgba(245, 158, 11, 0.2)'
+                },
+                'royal': {
+                    'primary': '#8b5cf6', 'dark': '#7c3aed', 'accent': '#a78bfa',
+                    'bg': '#f5f3ff', 'card': '#ffffff', 'text': '#2e1065', 'muted': '#4c1d95', 'shadow': 'rgba(139, 92, 246, 0.2)'
+                },
+                'rose': {
+                    'primary': '#f43f5e', 'dark': '#e11d48', 'accent': '#fb7185',
+                    'bg': '#fff1f2', 'card': '#ffffff', 'text': '#4c0519', 'muted': '#881337', 'shadow': 'rgba(244, 63, 94, 0.2)'
+                },
+                'classic': {
+                    'primary': '#64748b', 'dark': '#475569', 'accent': '#94a3b8',
+                    'bg': '#f8fafc', 'card': '#ffffff', 'text': '#0f172a', 'muted': '#334155', 'shadow': 'rgba(100, 116, 139, 0.1)'
+                },
+                'dark': {
+                    'primary': '#38bdf8', 'dark': '#0284c7', 'accent': '#7dd3fc',
+                    'bg': '#0f172a', 'card': '#1e293b', 'text': '#f8fafc', 'muted': '#94a3b8', 'shadow': 'rgba(0, 0, 0, 0.4)'
+                }
+            };
+
+            // 2. الحصول على النمط المختار من GhaithConfig (الموجود في config.js)
+            // إذا لم يوجد، نستخدم النمط الافتراضي 'default'
+            const selected = (typeof GhaithConfig !== 'undefined' && GhaithConfig.theme) ? GhaithConfig.theme : 'default';
+            const style = themesData[selected] || themesData['default'];
+
+            // 3. تحديث متغيرات CSS في الـ root (document)
+            const root = document.documentElement;
+
+            root.style.setProperty('--primary', style.primary);
+            root.style.setProperty('--primary-dark', style.dark);
+            root.style.setProperty('--accent', style.accent);
+            root.style.setProperty('--bg', style.bg);
+            root.style.setProperty('--card-bg', style.card);
+            root.style.setProperty('--text-main', style.text);
+            root.style.setProperty('--text-muted', style.muted);
+
+            // تحديث الظلال بشكل ديناميكي ليتناسب مع اللون المختار
+            root.style.setProperty('--shadow-soft', `0 10px 30px -10px ${style.shadow}`);
+            root.style.setProperty('--shadow-glow', `0 0 20px ${style.accent}44`); // إضافة شفافية للتوهج
+
+            console.log("تم تطبيق النمط: " + selected);
+        }
+
+        // 4. تشغيل الدالة بمجرد تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', applyGlobalTheme);
+    </script>
+    <div id="auto-loader">
+        <div class="loader-ring"></div>
+        <p style="margin-top: 20px; font-weight: 800; color: var(--primary); font-size: 18px;">على كيفك</p>
+        <p style="color: var(--text-muted); font-size: 14px;">جاري تأمين اتصالك...</p>
+    </div>
+
+    <div class="hero-section">
+        <div class="status-bar">
+            <span id="live-time" style="color: var(--accent);">00:00</span>
+            <span style="opacity: 0.3">|</span>
+            <span id="live-day">...</span>
+        </div>
+
+        <div class="brand-area">
+            <!-- <img src="logo.png" alt="" width="280px" style="margin-top: -30px;"> -->
+             <h1 style="color: white; font-size: 40px; margin-top: 20px;">على كيفك</h1>
+    <p>لخدمات الإنترنت اللاسلكي</p>
+        </div>
+    </div>
+
+    <div class="promo-slider">
+        <div class="slides-wrapper" id="slider-container">
+        </div>
+    </div>
+
+    <div class="container">
+
+
+        <div class="alert-error" id="error-box">
+            <span id="error-text">
+
+            </span>
+            <button class="close-btn" onclick="this.parentElement.style.display='none'">&times;</button>
+        </div>
+        <div id="recent-card-box" class="recent-card">
+            <div class="recent-info">
+                <p>آخر بطاقة استخدمتها:</p>
+                <span id="last-card-val">000000000</span>
+            </div>
+            <button type="button" class="btn-use-last" onclick="useLastCard()">استخدام</button>
+        </div>
+        <section id="login" class="page active">
+            <div class="login-card">
+                <div id="error-display" class="error-msg"></div>
+                <div id="error-display"
+                    style="display:none; color: #e53e3e; background: #fff5f5; padding: 10px; border-radius: 8px; margin-bottom: 15px; text-align: center; border: 1px solid #feb2b2; font-size: 14px;">
+                </div>
+                <form id="login-form" action="http://10.10.10.10/login" method="post" onsubmit="saveCredentials()">
+                    <input type="hidden" name="popup" value="false" />
+
+                    <div class="input-group">
+                        <label
+                            style="display:block; margin-bottom:8px; font-weight:700; font-size:13px; color:var(--text-muted)">اسم
+                            المستخدم</label>
+                        <div class="input-wrapper">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                <circle cx="12" cy="7" r="4" />
+                            </svg>
+                            <input style="color: #000 !important;" type="number" id="username" name="username"
+                                placeholder="User ID" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label
+                            style="display:block; margin-bottom:8px; font-weight:700; font-size:13px; color:var(--text-muted)">كلمة
+                            المرور</label>
+                        <div class="input-wrapper">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                            </svg>
+                            <input style="color: #000 !important;" type="number" id="password" name="password"
+                                placeholder="Password">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-connect">
+                        <span>اتصال آمن</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                            <polyline points="10 17 15 12 10 7" />
+                            <line x1="15" y1="12" x2="3" y2="12" />
+                        </svg>
+                    </button>
+
+                    <!-- <a id="store-link" href="#" class="store-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="9" cy="21" r="1" />
+                            <circle cx="20" cy="21" r="1" />
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                        </svg>
+                        اضغط هنا لشراء البطاقات أونلاين
+                    </a> -->
+                </form>
+            </div>
+        </section>
+
+        <section id="plans" class="page">
+            <h3 style="margin-bottom:20px; color:var(--primary); display:flex; align-items:center; gap:10px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                </svg>
+                باقات  شبكة على كيفك
+            </h3>
+            <div id="plans-container"></div>
+        </section>
+
+        <section id="resellers" class="page">
+            <h3 style="margin-bottom:20px; color:var(--primary); display:flex; align-items:center; gap:10px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                </svg>
+                نقاط التوزيع المعتمدة
+            </h3>
+            <div id="resellers-list"></div>
+        </section>
+
+        <section id="info" class="page">
+            <div class="login-card" style="text-align: center;">
+                <div
+                    style="width:60px; height:60px; background:#e0f2fe; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 15px; color:var(--primary);">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                </div>
+                <h3 id="support-phone-val" style="margin:0; font-size:22px; color:var(--text-main);"></h3>
+                <p style="color: var(--text-muted); font-size: 14px; margin-top:5px;">فريق الدعم الفني جاهز لخدمتكم</p>
+                <div style="margin: 25px 0; height:1px; background:#e2e8f0;"></div>
+                <button id="whatsapp-btn" class="btn-connect"
+                    style="background: #25D366; box-shadow: 0 10px 20px rgba(37,211,102,0.2);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                    </svg>
+                    محادثة واتساب
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <nav class="dock">
+        <div class="dock-item active" onclick="nav('login', this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+            <span>الرئيسية</span>
+        </div>
+        <div class="dock-item" onclick="nav('plans', this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3" y="3" width="7" height="7" />
+                <rect x="14" y="3" width="7" height="7" />
+                <rect x="14" y="14" width="7" height="7" />
+                <rect x="3" y="14" width="7" height="7" />
+            </svg>
+            <span>الباقات</span>
+        </div>
+        <div class="dock-item" onclick="nav('resellers', this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+            <span>الموزعين</span>
+        </div>
+        <div class="dock-item" onclick="nav('info', this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
+            <span>المساعدة</span>
+        </div>
+    </nav>
+    <script>
+        // --- 0. إعدادات الحظر والأمان ---
+        const MAX_ATTEMPTS = 5;      // عدد المحاولات قبل الحظر
+        const LOCKOUT_TIME = 60000;  // مدة الحظر (دقيقة)
+        let isCurrentlySubmitting = false; // حماية ضد الإرسال المزدوج
+
+        // --- 1. الساعة والتاريخ ---
+        function updateClock() {
+            const now = new Date();
+            const days = ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
+            const dayEl = document.getElementById('live-day');
+            const timeEl = document.getElementById('live-time');
+            if (dayEl) dayEl.innerText = days[now.getDay()] + ' ' + now.toLocaleDateString('ar-EG');
+            if (timeEl) timeEl.innerText = now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', hour12: true });
+        }
+        setInterval(updateClock, 1000); updateClock();
+
+        // --- 2. التنقل بين الصفحات ---
+        function nav(id, el) {
+            document.querySelectorAll('.page').forEach(p => {
+                p.classList.remove('active');
+                setTimeout(() => { if (!p.classList.contains('active')) p.style.display = 'none'; }, 200);
+            });
+            const target = document.getElementById(id);
+            if (target) {
+                target.style.display = 'block';
+                setTimeout(() => target.classList.add('active'), 10);
+            }
+            document.querySelectorAll('.dock-item').forEach(d => d.classList.remove('active'));
+            if (el) el.classList.add('active');
+        }
+
+        // --- 3. معالجة البيانات واللاحقة 196 (تعديل ذكي) ---
+        function saveCredentials() {
+            if (isCurrentlySubmitting) return false;
+
+            let uInput = document.getElementById('username');
+            let pInput = document.getElementById('password');
+            let u = uInput.value;
+            let p = pInput.value;
+
+            // إضافة 196 فقط إذا كان الطول 9 ولم تكن مضافة مسبقاً
+            // if (u.length === 9 && !u.endsWith("196")) {
+            //     u = u + "196";
+            //     uInput.value = u;
+            // }
+
+            // حفظ البطاقة لاستخدامها في ميزة "البطاقة الأخيرة" (دائم)
+            localStorage.setItem('last_successful_u', u);
+            localStorage.setItem('last_successful_p', p);
+
+            // حفظ للدخول التلقائي في حال إعادة التحميل (مؤقت)
+            localStorage.setItem('gh_auto_u', u);
+            localStorage.setItem('gh_auto_p', p);
+
+            if (document.getElementById('auto-loader')) {
+                document.getElementById('auto-loader').style.display = 'flex';
+            }
+
+            isCurrentlySubmitting = true;
+            return true;
+        }
+
+        // --- 4. ميزة البطاقة الأخيرة (جديد) ---
+        function checkRecentCard() {
+            const u = localStorage.getItem('last_successful_u');
+            const recentBox = document.getElementById('recent-card-box');
+            const recentVal = document.getElementById('last-card-val');
+
+            if (u && recentBox) {
+                recentBox.style.display = 'flex';
+                if (recentVal) recentVal.innerText = u;
+            }
+        }
+
+        function useLastCard() {
+            const u = localStorage.getItem('last_successful_u');
+            const p = localStorage.getItem('last_successful_p');
+            if (u) {
+                document.getElementById('username').value = u;
+                document.getElementById('password').value = p || "";
+                // تنفيذ الإرسال فوراً
+                if (saveCredentials()) {
+                    document.getElementById('login-form').submit();
+                }
+            }
+        }
+
+        // --- 5. وظائف الحظر ---
+        function checkLockout() {
+            const lockoutTimestamp = localStorage.getItem('gh_lockout_until');
+            const now = new Date().getTime();
+            if (lockoutTimestamp && now < parseInt(lockoutTimestamp)) {
+                const remainingSecs = Math.ceil((parseInt(lockoutTimestamp) - now) / 1000);
+                showLockoutUI(remainingSecs);
+                return true;
+            }
+            return false;
+        }
+
+        function showLockoutUI(seconds) {
+            const loginForm = document.getElementById('login-form');
+            if (loginForm) loginForm.style.display = 'none';
+
+            let lockBox = document.getElementById('lockout-msg');
+            if (!lockBox && loginForm) {
+                lockBox = document.createElement('div');
+                lockBox.id = 'lockout-msg';
+                loginForm.parentNode.insertBefore(lockBox, loginForm);
+            }
+
+            if (lockBox) {
+                lockBox.innerHTML = `
+                <div style="text-align:center; padding: 25px; background: #fff5f5; border: 2px solid #feb2b2; border-radius: 20px; margin: 20px 0;">
+                    <h3 style="color:#c53030; margin:0 0 10px 0;">دخول مقيد مؤقتاً</h3>
+                    <p style="font-size:14px;">يرجى الانتظار لإعادة المحاولة:</p>
+                    <div id="lockout-timer" style="font-weight:bold; font-size:24px; color:#e53e3e;">${seconds} ثانية</div>
+                </div>`;
+            }
+
+            const interval = setInterval(() => {
+                const now = new Date().getTime();
+                const rem = Math.ceil((parseInt(localStorage.getItem('gh_lockout_until')) - now) / 1000);
+                if (rem <= 0) {
+                    clearInterval(interval);
+                    localStorage.removeItem('gh_attempts');
+                    localStorage.removeItem('gh_lockout_until');
+                    window.location.reload();
+                } else {
+                    const timerEl = document.getElementById('lockout-timer');
+                    if (timerEl) timerEl.innerText = rem + " ثانية";
+                }
+            }, 1000);
+        }
+
+        // --- 6. الدخول التلقائي ومعالجة الحظر ---
+        function checkAutoLogin() {
+            const urlParams = new URLSearchParams(window.location.search);
+
+            if (urlParams.has('error')) {
+                // في حال وجود خطأ، نوقف الدخول التلقائي فوراً لمنع التكرار
+                localStorage.removeItem('gh_auto_u');
+                localStorage.removeItem('gh_auto_p');
+
+                let attempts = parseInt(localStorage.getItem('gh_attempts') || '0') + 1;
+                localStorage.setItem('gh_attempts', attempts);
+
+                if (attempts >= MAX_ATTEMPTS) {
+                    const until = new Date().getTime() + LOCKOUT_TIME;
+                    localStorage.setItem('gh_lockout_until', until);
+                    checkLockout();
+                    return;
+                }
+
+                if (document.getElementById('auto-loader')) document.getElementById('auto-loader').style.display = 'none';
+                const errorBox = document.getElementById('error-display');
+                if (errorBox) {
+                    errorBox.style.display = 'block';
+                    let msg = urlParams.get('error');
+                    if (msg.includes("invalid")) msg = "البيانات غير صحيحة";
+                    errorBox.innerText = msg + ` (محاولة ${attempts} من ${MAX_ATTEMPTS})`;
+                }
+                return;
+            }
+
+            if (!checkLockout()) {
+                let u = localStorage.getItem('gh_auto_u');
+                let p = localStorage.getItem('gh_auto_p');
+
+                if (u && !isCurrentlySubmitting) {
+                    isCurrentlySubmitting = true;
+                    document.getElementById('username').value = u;
+                    document.getElementById('password').value = p || "";
+                    if (document.getElementById('auto-loader')) document.getElementById('auto-loader').style.display = 'flex';
+
+                    setTimeout(() => {
+                        localStorage.removeItem('gh_auto_u');
+                        document.getElementById('login-form').submit();
+                    }, 1000);
+                }
+            }
+        }
+
+        // --- 7. السلايدر و Config ---
+        function startSlider() {
+            const container = document.getElementById('slider-container');
+            const slides = document.querySelectorAll('.slide');
+            if (!container || slides.length <= 1) return;
+            let index = 0;
+            setInterval(() => {
+                index = (index + 1) % slides.length;
+                container.style.transform = `translateX(${index * 100}%)`;
+            }, 4000);
+        }
+
+        function loadAllData() {
+            if (typeof GhaithConfig === 'undefined') return;
+
+            const sc = document.getElementById('slider-container');
+            if (sc && GhaithConfig.slider) {
+                sc.innerHTML = GhaithConfig.slider.map(s => `<div class="slide"><h3>${s.title}</h3><p>${s.desc}</p></div>`).join('');
+                startSlider();
+            }
+
+            const pc = document.getElementById('plans-container');
+            if (pc && GhaithConfig.plans) {
+                pc.innerHTML = GhaithConfig.plans.map(p => `<div class="card-item"><div><h4>${p.name}</h4><small>${p.info}</small></div><div class="price-tag">${p.price}</div></div>`).join('');
+            }
+
+            if (GhaithConfig.support) {
+                const spVal = document.getElementById('support-phone-val');
+                const waBtn = document.getElementById('whatsapp-btn');
+                const stLnk = document.getElementById('store-link');
+                if (spVal) spVal.innerText = GhaithConfig.support.phone;
+                if (waBtn) waBtn.onclick = () => window.open(GhaithConfig.support.whatsapp);
+                if (stLnk) stLnk.href = GhaithConfig.support.onlineStore || "#";
+            }
+
+            checkRecentCard();
+            checkAutoLogin();
+        }
+
+        window.onload = loadAllData;
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var translations = {
+                "Sorry, the card you entered is not valid, Please try another card.": "عذراً،  تم انتهاء صلاحية هذه البطاقة ... يرجى تجربة بطاقة جديدة.",
+                "invalid username or password": "عذراً، خطأ في اسم المستخدم أو كلمة المرور. يرجى التأكد والمحاولة مرة أخرى."
+            };
+
+            var errorTextEl = document.getElementById('error-text');
+            if (errorTextEl) {
+                var rawText = errorTextEl.innerText.trim();
+                if (translations[rawText]) {
+                    errorTextEl.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + translations[rawText];
+                    document.getElementById('error-box').style.display = 'flex';
+                }
+            }
+
+            var elements = document.querySelectorAll('.error-msg, font, b');
+            elements.forEach(function (el) {
+                var txt = el.innerText.trim();
+                if (translations[txt]) {
+                    el.style.direction = "rtl";
+                    el.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + translations[txt];
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

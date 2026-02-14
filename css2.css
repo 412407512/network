@@ -1,0 +1,12 @@
+/* ØªØ¹Ø±ÙŠÙ Ø§Ù„Ø®Ø· Ø¨Ø´ÙƒÙ„ Ù…Ø­Ù„ÙŠ */
+@font-face {
+    font-family: 'Tajawal';
+    src: url('fonts/Tajawal-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* ØªØ·Ø¨ÙŠÙ‚ Ø§Ù„Ø®Ø· Ø¹Ù„Ù‰ Ø§Ù„ØµÙØ­Ø© Ø¨Ø§Ù„ÙƒØ§Ù…Ù„ */
+* {
+    font-family: 'Tajawal', sans-serif !important;
+}
