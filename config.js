@@ -28,21 +28,21 @@ const GhaithConfig = {
     ],
     "resellers": [
         {
-            "name": "كفي فيريرو",
-            "address": "بجانب مستشفى الكويتي",
+            "name": "Test",
+            "address": "Next To Test",
             "phone": ""
         }
     ],
     "support": {
-        "phone": "0595600454",
+        "phone": "0595587512",
         "address": "العنوان الرئيسي",
         "whatsapp": "https:\/\/wa.me\/message\/3K7P7ZAN2FMFO1",
-        "onlineStore": "https://aqsa.convertcards.site"
+        "onlineStore": "https://fleet-360.com"
     },
     "theme": "amber",
     "areas": [
         {
-            "area_name": "جامعة الأقصى",
+            "area_name": "خانيونس",
             "points": [
                 {
                     "name": "1",
@@ -57,7 +57,7 @@ const GhaithConfig = {
             ]
         },
         {
-            "area_name": "مخيم السلام",
+            "area_name": "مخيم المواصي",
             "points": [
                 {
                     "name": "1",
@@ -72,7 +72,7 @@ const GhaithConfig = {
             ]
         },
         {
-            "area_name": "مخيم الشافعي",
+            "area_name": "فش فرش",
             "points": []
         }
     ]
