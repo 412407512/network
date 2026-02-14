@@ -36,7 +36,7 @@ const GhaithConfig = {
     "support": {    
         "phone": "0595587514",
         "address": "العنوان الرئيسي",
-        "whatsapp": "https:\/\/wa.me\/message\/3K7P7ZAN2FMFO1",
+       "whatsapp": "https://wa.me/970595587514",
         "onlineStore": "https://fleet-360.com"
     },
     "theme": "amber",
