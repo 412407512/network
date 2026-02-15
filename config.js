@@ -31,15 +31,19 @@ const SamiConfig = {
             "name": "Test",
             "address": "Next To Test",
             "phone": ""
+        },{
+            "name": "Test2",
+            "address": "Next To Test",
+            "phone": "0595587514"
         }
     ],
-    "support": {    
+    "support": {
         "phone": "0595587514",
         "address": "العنوان الرئيسي",
-       "whatsapp": "https://wa.me/970595587514",
+        "whatsapp": "https://wa.me/970595587514",
         "onlineStore": "https://fleet-360.com"
     },
-    "theme": "dark",
+    "theme": "rose",
     "areas": [
         {
             "area_name": "خانيونس",
