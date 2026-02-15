@@ -519,7 +519,7 @@
             // 2. الحصول على النمط المختار من GhaithConfig (الموجود في config.js)
             // إذا لم يوجد، نستخدم النمط الافتراضي 'default'
             const selected = (typeof GhaithConfig !== 'undefined' && GhaithConfig.theme) ? GhaithConfig.theme : 'default';
-            const style = themesData['dark'] || themesData['default'];
+            const style = themesData['dark']// themesData['dark'] || themesData['default'];
 
             // 3. تحديث متغيرات CSS في الـ root (document)
             const root = document.documentElement;
