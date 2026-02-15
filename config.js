@@ -28,19 +28,19 @@ const SamiConfig = {
     ],
     "resellers": [
         {
-            "name": "ميني ماركت الهندسة"
+            "name": "ميني ماركت الهندسة",
             "address": "بجوار العيادة شارع زعرب",
             "phone": ""
         },{
             "name": "ميني ماركت النحال",
-            "address": "مقابل التكية في الشارع المقابل لمسجد النور"
+            "address": "مقابل التكية في الشارع المقابل لمسجد النور",
             "phone": ""
         }
     ],
     "support": {
-        "phone": "0593020672"
+        "phone": "0593020672",
         "address": "العنوان الرئيسي",
-        "whatsapp": "https://wa.me/970594870519"
+        "whatsapp": "https://wa.me/970594870519",
         "onlineStore": "https://fleet-360.com"
     },
     "theme": "rose",
