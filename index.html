@@ -473,6 +473,30 @@
                 transform: rotate(360deg);
             }
         }
+        
+        /* 1. تنظيف حاوية اللوجو */
+.brand-area {
+    background: transparent !important; /* حذف أي لون خلفية للحاوية */
+    display: flex;                      /* تفعيل الفليكس لسهولة التحكم */
+    justify-content: center;            /* توسيط اللوجو أفقياً */
+    align-items: center;                /* توسيط اللوجو عمودياً */
+    padding: 20px 0;                    /* إعطاء مساحة تنفس بدل المارجن السالب */
+    overflow: hidden;                   /* لضمان عدم خروج الصورة عن الإطار */
+}
+
+/* 2. ضبط صورة اللوجو نفسها */
+.brand-area img {
+    max-width: 100%;       /* لضمان التجاوب مع الشاشات الصغيرة */
+    height: auto;          /* الحفاظ على الأبعاد */
+    margin-top: 0 !important; /* إلغاء المارجن القديم إذا كان مسبب مشكلة */
+    
+    /* إذا كانت خلفية الصورة الأصلية بيضاء وتريد دمجها مع الموقع */
+    mix-blend-mode: multiply; 
+    
+    /* تحسين جودة الصورة */
+    image-rendering: -webkit-optimize-contrast;
+}
+
     </style>
 </head>
 
@@ -557,7 +581,10 @@
 
         <div class="brand-area">
              <img src="ef371c10-51f9-4eaa-8fea-ec45f0eb923f.jpeg" alt="" width="280px" style="margin-top: -30px;"> 
-           
+           <!--
+         <h1 style="color: white; font-size: 40px; margin-top: 20px;">على كيفك</h1>
+            <p>لخدمات الإنترنت اللاسلكي</p>
+        -->
         </div>
     </div>
 
