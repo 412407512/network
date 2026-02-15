@@ -39,7 +39,7 @@ const GhaithConfig = {
        "whatsapp": "https://wa.me/970595587514",
         "onlineStore": "https://fleet-360.com"
     },
-    "theme": "amber",
+    "theme": "dark",
     "areas": [
         {
             "area_name": "خانيونس",
