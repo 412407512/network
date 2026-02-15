@@ -38,9 +38,9 @@ const SamiConfig = {
         }
     ],
     "support": {
-        "phone": "0595587514",
+        "phone": "0593020672"
         "address": "العنوان الرئيسي",
-        "whatsapp": "https://wa.me/970595587514",
+        "whatsapp": "https://wa.me/970594870519"
         "onlineStore": "https://fleet-360.com"
     },
     "theme": "rose",
