@@ -28,13 +28,13 @@ const SamiConfig = {
     ],
     "resellers": [
         {
-            "name": "Test",
-            "address": "Next To Test",
+            "name": "ميني ماركت الهندسة"
+            "address": "بجوار العيادة شارع زعرب",
             "phone": ""
         },{
-            "name": "Test2",
-            "address": "Next To Test",
-            "phone": "0595587514"
+            "name": "ميني ماركت النحال",
+            "address": "مقابل التكية في الشارع المقابل لمسجد النور"
+            "phone": ""
         }
     ],
     "support": {
