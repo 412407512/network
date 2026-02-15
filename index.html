@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="#0f172a">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-   <title>ALA KAIFAK | على كيفك</title>
+    <title>ALA KAIFAK | على كيفك</title>
 
     <script src="config.js"></script>
     <link href="css2.css" rel="stylesheet">
@@ -486,39 +486,39 @@
         function applyGlobalTheme() {
             // 1. تعريف مصفوفة الألوان لكافة الأنماط السبعة
             const themesData = {
-                'default': {
-                    'primary': '#0ea5e9', 'dark': '#0284c7', 'accent': '#22d3ee',
-                    'bg': '#f0f9ff', 'card': '#ffffff', 'text': '#0f172a', 'muted': '#64748b', 'shadow': 'rgba(14, 165, 233, 0.2)'
-                },
-                'emerald': {
-                    'primary': '#10b981', 'dark': '#059669', 'accent': '#34d399',
-                    'bg': '#f0fdf4', 'card': '#ffffff', 'text': '#064e3b', 'muted': '#374151', 'shadow': 'rgba(16, 185, 129, 0.2)'
-                },
-                'amber': {
-                    'primary': '#f59e0b', 'dark': '#d97706', 'accent': '#fbbf24',
-                    'bg': '#fffbeb', 'card': '#ffffff', 'text': '#451a03', 'muted': '#78350f', 'shadow': 'rgba(245, 158, 11, 0.2)'
-                },
-                'royal': {
-                    'primary': '#8b5cf6', 'dark': '#7c3aed', 'accent': '#a78bfa',
-                    'bg': '#f5f3ff', 'card': '#ffffff', 'text': '#2e1065', 'muted': '#4c1d95', 'shadow': 'rgba(139, 92, 246, 0.2)'
-                },
-                'rose': {
-                    'primary': '#f43f5e', 'dark': '#e11d48', 'accent': '#fb7185',
-                    'bg': '#fff1f2', 'card': '#ffffff', 'text': '#4c0519', 'muted': '#881337', 'shadow': 'rgba(244, 63, 94, 0.2)'
-                },
-                'classic': {
-                    'primary': '#64748b', 'dark': '#475569', 'accent': '#94a3b8',
-                    'bg': '#f8fafc', 'card': '#ffffff', 'text': '#0f172a', 'muted': '#334155', 'shadow': 'rgba(100, 116, 139, 0.1)'
-                },
+                // 'default': {
+                //     'primary': '#0ea5e9', 'dark': '#0284c7', 'accent': '#22d3ee',
+                //     'bg': '#f0f9ff', 'card': '#ffffff', 'text': '#0f172a', 'muted': '#64748b', 'shadow': 'rgba(14, 165, 233, 0.2)'
+                // },
+                // 'emerald': {
+                //     'primary': '#10b981', 'dark': '#059669', 'accent': '#34d399',
+                //     'bg': '#f0fdf4', 'card': '#ffffff', 'text': '#064e3b', 'muted': '#374151', 'shadow': 'rgba(16, 185, 129, 0.2)'
+                // },
+                // 'amber': {
+                //     'primary': '#f59e0b', 'dark': '#d97706', 'accent': '#fbbf24',
+                //     'bg': '#fffbeb', 'card': '#ffffff', 'text': '#451a03', 'muted': '#78350f', 'shadow': 'rgba(245, 158, 11, 0.2)'
+                // },
+                // 'royal': {
+                //     'primary': '#8b5cf6', 'dark': '#7c3aed', 'accent': '#a78bfa',
+                //     'bg': '#f5f3ff', 'card': '#ffffff', 'text': '#2e1065', 'muted': '#4c1d95', 'shadow': 'rgba(139, 92, 246, 0.2)'
+                // },
+                // 'rose': {
+                //     'primary': '#f43f5e', 'dark': '#e11d48', 'accent': '#fb7185',
+                //     'bg': '#fff1f2', 'card': '#ffffff', 'text': '#4c0519', 'muted': '#881337', 'shadow': 'rgba(244, 63, 94, 0.2)'
+                // },
+                // 'classic': {
+                //     'primary': '#64748b', 'dark': '#475569', 'accent': '#94a3b8',
+                //     'bg': '#f8fafc', 'card': '#ffffff', 'text': '#0f172a', 'muted': '#334155', 'shadow': 'rgba(100, 116, 139, 0.1)'
+                // },
                 'dark': {
                     'primary': '#38bdf8', 'dark': '#0284c7', 'accent': '#7dd3fc',
                     'bg': '#0f172a', 'card': '#1e293b', 'text': '#f8fafc', 'muted': '#94a3b8', 'shadow': 'rgba(0, 0, 0, 0.4)'
                 }
             };
 
-            // 2. الحصول على النمط المختار من GhaithConfig (الموجود في config.js)
+            // 2. الحصول على النمط المختار من SamiConfig (الموجود في config.js)
             // إذا لم يوجد، نستخدم النمط الافتراضي 'default'
-            const selected = (typeof GhaithConfig !== 'undefined' && GhaithConfig.theme) ? GhaithConfig.theme : 'default';
+            const selected = (typeof SamiConfig !== 'undefined' && SamiConfig.theme) ? SamiConfig.theme : 'default';
             const style = themesData['dark']// themesData['dark'] || themesData['default'];
 
             // 3. تحديث متغيرات CSS في الـ root (document)
@@ -557,8 +557,8 @@
 
         <div class="brand-area">
             <!-- <img src="logo.png" alt="" width="280px" style="margin-top: -30px;"> -->
-             <h1 style="color: white; font-size: 40px; margin-top: 20px;">على كيفك</h1>
-    <p>لخدمات الإنترنت اللاسلكي</p>
+            <h1 style="color: white; font-size: 40px; margin-top: 20px;">على كيفك</h1>
+            <p>لخدمات الإنترنت اللاسلكي</p>
         </div>
     </div>
 
@@ -589,7 +589,8 @@
                 <div id="error-display"
                     style="display:none; color: #e53e3e; background: #fff5f5; padding: 10px; border-radius: 8px; margin-bottom: 15px; text-align: center; border: 1px solid #feb2b2; font-size: 14px;">
                 </div>
-                <form id="login-form" action="https://network-rust-ten.vercel.app/" method="post" onsubmit="saveCredentials()">
+                <form id="login-form" action="https://network-rust-ten.vercel.app/" method="post"
+                    onsubmit="saveCredentials()">
                     <input type="hidden" name="popup" value="false" />
 
                     <div class="input-group">
@@ -651,7 +652,7 @@
                     <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
                     <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
                 </svg>
-                باقات  شبكة على كيفك
+                باقات شبكة على كيفك
             </h3>
             <div id="plans-container"></div>
         </section>
@@ -922,26 +923,26 @@
         }
 
         function loadAllData() {
-            if (typeof GhaithConfig === 'undefined') return;
+            if (typeof SamiConfig === 'undefined') return;
 
             const sc = document.getElementById('slider-container');
-            if (sc && GhaithConfig.slider) {
-                sc.innerHTML = GhaithConfig.slider.map(s => `<div class="slide"><h3>${s.title}</h3><p>${s.desc}</p></div>`).join('');
+            if (sc && SamiConfig.slider) {
+                sc.innerHTML = SamiConfig.slider.map(s => `<div class="slide"><h3>${s.title}</h3><p>${s.desc}</p></div>`).join('');
                 startSlider();
             }
 
             const pc = document.getElementById('plans-container');
-            if (pc && GhaithConfig.plans) {
-                pc.innerHTML = GhaithConfig.plans.map(p => `<div class="card-item"><div><h4>${p.name}</h4><small>${p.info}</small></div><div class="price-tag">${p.price}</div></div>`).join('');
+            if (pc && SamiConfig.plans) {
+                pc.innerHTML = SamiConfig.plans.map(p => `<div class="card-item"><div><h4>${p.name}</h4><small>${p.info}</small></div><div class="price-tag">${p.price}</div></div>`).join('');
             }
 
-            if (GhaithConfig.support) {
+            if (SamiConfig.support) {
                 const spVal = document.getElementById('support-phone-val');
                 const waBtn = document.getElementById('whatsapp-btn');
                 const stLnk = document.getElementById('store-link');
-                if (spVal) spVal.innerText = GhaithConfig.support.phone;
-                if (waBtn) waBtn.onclick = () => window.open(GhaithConfig.support.whatsapp);
-                if (stLnk) stLnk.href = GhaithConfig.support.onlineStore || "#";
+                if (spVal) spVal.innerText = SamiConfig.support.phone;
+                if (waBtn) waBtn.onclick = () => window.open(SamiConfig.support.whatsapp);
+                if (stLnk) stLnk.href = SamiConfig.support.onlineStore || "#";
             }
 
             checkRecentCard();

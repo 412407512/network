@@ -1,4 +1,4 @@
-const GhaithConfig = {
+const SamiConfig = {
     "slider": [
         {
             "title": "أهلاً بكم في شبكة على كيفك لخدمات الانترنت",
